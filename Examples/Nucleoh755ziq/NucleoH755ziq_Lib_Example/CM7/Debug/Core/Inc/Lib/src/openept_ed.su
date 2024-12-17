@@ -1,0 +1,4 @@
+../Core/Inc/Lib/src/openept_ed.c:25:5:OpenEPT_ED_Init	8	static
+../Core/Inc/Lib/src/openept_ed.c:43:5:OpenEPT_ED_SetEP	24	static
+../Core/Inc/Lib/src/openept_ed.c:65:5:OpenEPT_ED_SyncUp	8	static
+../Core/Inc/Lib/src/openept_ed.c:78:5:OpenEPT_ED_SyncDown	8	static
