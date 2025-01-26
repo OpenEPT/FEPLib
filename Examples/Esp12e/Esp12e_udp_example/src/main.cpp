@@ -30,7 +30,7 @@ const char *password = "embedded@2020";
 
 WiFiUDP Udp;
 unsigned int localUdpPort = 53615;
-const char *text = "HARI AAAA";
+const char *text = "HARI AAA1";
 char big_niz[1000];
 char data_string[255];
 unsigned int cnt;
