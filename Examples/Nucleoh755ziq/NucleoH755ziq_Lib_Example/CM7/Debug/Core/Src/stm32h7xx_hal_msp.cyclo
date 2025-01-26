@@ -1,0 +1,7 @@
+stm32h7xx_hal_msp.c:63:6:HAL_MspInit	1
+stm32h7xx_hal_msp.c:84:6:HAL_ETH_MspInit	2
+stm32h7xx_hal_msp.c:153:6:HAL_ETH_MspDeInit	2
+stm32h7xx_hal_msp.c:197:6:HAL_UART_MspInit	3
+stm32h7xx_hal_msp.c:244:6:HAL_UART_MspDeInit	2
+stm32h7xx_hal_msp.c:273:6:HAL_PCD_MspInit	3
+stm32h7xx_hal_msp.c:330:6:HAL_PCD_MspDeInit	2
