@@ -13,7 +13,12 @@
 #include "string.h"
 //#include "esp12e.h"
 #include <Arduino.h>
+
+
 #define SYNC_PIN 5
+
+static uint8_t  OPENEPT_SYNC_PIN_VALUE;
+
 
 //UART_HandleTypeDef huart2;
 
@@ -31,6 +36,7 @@ int OpenEPT_ED_Platform_Init()
 {
     pinMode(SYNC_PIN, OUTPUT);
     Serial.begin(115200);
+    OPENEPT_SYNC_PIN_VALUE = 0;
     return 1;
 }
 
@@ -76,5 +82,21 @@ int OpenEPT_ED_Platform_SyncUp()
 int OpenEPT_ED_Platform_SyncDown()
 {
     digitalWrite(SYNC_PIN, LOW);
+    return OPEN_EPT_STATUS_OK;
+}
+
+/**
+ * @brief Synchronizes down by setting GPIOA pin 5 to LOW.
+ *
+ * This function sets GPIOA pin 5 to LOW and verifies the pin state
+ * to confirm the operation.
+ *
+ * @return OPEN_EPT_STATUS_OK if the pin is reset successfully,
+ *         OPEN_EPT_STATUS_ERROR if the pin state is incorrect.
+ */
+int OpenEPT_ED_Platform_SyncToogle()
+{
+    OPENEPT_SYNC_PIN_VALUE = OPENEPT_SYNC_PIN_VALUE == 0 ? 1 : 0;
+    digitalWrite(SYNC_PIN, OPENEPT_SYNC_PIN_VALUE);
     return OPEN_EPT_STATUS_OK;
 }

@@ -11,6 +11,7 @@
  */
 
 #include "openept_ed.h"
+#include "Platform/esp12e.h"
 #include <string.h>
 /**
  * @brief Initializes the OpenEPT Embedded Device.
@@ -39,7 +40,7 @@ int OpenEPT_ED_Init()
  * @return OPEN_EPT_STATUS_OK on successful setup,
  *         OPEN_EPT_STATUS_ERROR on failure.
  */
-int OpenEPT_ED_SetEP(uint8_t* epName, uint32_t epNameSize)
+int OpenEPT_ED_SetEPSlow(uint8_t* epName, uint32_t epNameSize)
 {
     if(OpenEPT_ED_Platform_SyncUp() != 0) return OPEN_EPT_STATUS_ERROR;
     uint32_t cnt = 0;
@@ -51,6 +52,21 @@ int OpenEPT_ED_SetEP(uint8_t* epName, uint32_t epNameSize)
     if(OpenEPT_ED_Platform_Send('\r') != 0) return OPEN_EPT_STATUS_ERROR;
     if(OpenEPT_ED_Platform_SyncDown() != 0) return OPEN_EPT_STATUS_ERROR;
     return OPEN_EPT_STATUS_OK;
+}
+
+
+int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize)
+{
+    if(OpenEPT_ED_Platform_SyncToogle() != 0) return OPEN_EPT_STATUS_ERROR;
+    uint32_t cnt = 0;
+    while(cnt < epNameSize)
+    {
+        if(OpenEPT_ED_Platform_Send((char)epName[cnt]) != 0) return OPEN_EPT_STATUS_ERROR;
+        cnt++;
+    }
+    if(OpenEPT_ED_Platform_Send('\r') != 0) return OPEN_EPT_STATUS_ERROR;
+    return OPEN_EPT_STATUS_OK;
+
 }
 
 /**
@@ -77,4 +93,10 @@ int OpenEPT_ED_SyncUp()
 int OpenEPT_ED_SyncDown()
 {
     return OpenEPT_ED_Platform_SyncDown();
+}
+
+
+int OpenEPT_ED_SyncToogle()
+{
+    return OpenEPT_ED_Platform_SyncToogle();
 }

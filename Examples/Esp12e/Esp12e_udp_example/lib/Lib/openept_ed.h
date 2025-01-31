@@ -17,8 +17,10 @@
 #include <stdint.h>
 
 int OpenEPT_ED_Init();
-int OpenEPT_ED_SetEP(uint8_t* epName, uint32_t epNameSize);
+int OpenEPT_ED_SetEPSlow(uint8_t* epName, uint32_t epNameSize);
+int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize);
 int OpenEPT_ED_SyncUp();
 int OpenEPT_ED_SyncDown ();
+int OpenEPT_ED_SyncToogle();
 
 #endif /* OPENEPT_ED_H_ */

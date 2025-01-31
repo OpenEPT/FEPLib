@@ -25,8 +25,8 @@
 
 #define BUILTIN_LED 2
 
-const char *ssid = "Embedded";
-const char *password = "embedded@2020";
+const char *ssid = "Haris";
+const char *password = "21051995";
 
 WiFiUDP Udp;
 unsigned int localUdpPort = 53615;
@@ -48,7 +48,7 @@ void setup() {
 	digitalWrite(BUILTIN_LED, HIGH);
 	OpenEPT_ED_Init();
 	pinMode(BUILTIN_LED, OUTPUT);
-	OpenEPT_ED_SetEP((uint8_t*)"Connecting\n\r", strlen("Connecting\n\r"));
+	OpenEPT_ED_SetEPFast((uint8_t*)"Connecting\n\r", strlen("Connecting\n\r"));
 	WiFi.begin(ssid, password);
 	//Connect to AP
     while (WiFi.status() != WL_CONNECTED){
@@ -63,7 +63,7 @@ void setup() {
   	WiFi.persistent(true);
 	// Print the IP address assigned to ESP-12E
 	Serial.println(WiFi.localIP());
-	OpenEPT_ED_SetEP((uint8_t*)"Connecting done\n\r", strlen("Connecting done\n\r"));
+	OpenEPT_ED_SetEPFast((uint8_t*)"Connecting done\n\r", strlen("Connecting done\n\r"));
 	Serial.print("Access Point IP Address: ");
   	Serial.println(WiFi.gatewayIP());  // This is the router's IP address
 	Udp.begin(localUdpPort);
@@ -73,8 +73,8 @@ void setup() {
 }
 void loop() 
 {	
-	snprintf(data_string, sizeof(data_string), "Data sending %u\r\n", cnt);
-	OpenEPT_ED_SetEP((uint8_t*)data_string, strlen(data_string));
+	snprintf(data_string, sizeof(data_string), "Data sending %u", cnt);
+	OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 	//Send dummy data
 	
 	switch(currentAction)
@@ -100,8 +100,8 @@ void loop()
 	else {
 		digitalWrite(BUILTIN_LED, LOW);
 	}
-	snprintf(data_string, sizeof(data_string), "Data sent %u\r\n", cnt);
-	OpenEPT_ED_SetEP((uint8_t*)data_string, strlen(data_string));
+	snprintf(data_string, sizeof(data_string), "Data sent %u", cnt);
+	OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 	cnt++;
 	iterationNo +=1;
 	delay(1000);
@@ -109,6 +109,6 @@ void loop()
 	{
 		currentAction = currentAction == ACTION_BIG ? ACTION_SMALL : ACTION_BIG;
 	}
-	if (iterationNo == 10) ESP.deepSleep(5000000);
+	//if (iterationNo == 10) ESP.deepSleep(5000000);
 
 }
