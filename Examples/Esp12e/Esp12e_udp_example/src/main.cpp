@@ -34,6 +34,7 @@ const char *text = "DATA AAA1";
 char big_niz[1000];
 char data_string[255];
 unsigned int cnt;
+unsigned int cnt1;
 
 
 typedef enum
@@ -47,8 +48,10 @@ void setup() {
 	memset(big_niz, 'A', sizeof(big_niz));
 	digitalWrite(BUILTIN_LED, HIGH);
 	OpenEPT_ED_Init();
+	OpenEPT_ED_SendInfo("Try to start EP Link");
 	pinMode(BUILTIN_LED, OUTPUT);
-	OpenEPT_ED_SetEPFast((uint8_t*)"Connecting\n\r", strlen("Connecting\n\r"));
+	OpenEPT_ED_Start();
+	OpenEPT_ED_SendInfo("EP Link started");
 	WiFi.begin(ssid, password);
 	//Connect to AP
     while (WiFi.status() != WL_CONNECTED){
@@ -57,19 +60,21 @@ void setup() {
   	}
 	digitalWrite(BUILTIN_LED, LOW);
 	//print a new line, then print WiFi connected and the IP address
-	Serial.println("");
-	Serial.println("WiFi connected");
+	OpenEPT_ED_SendInfo("Wifi Connecting");
 	WiFi.setAutoReconnect(true);
   	WiFi.persistent(true);
 	// Print the IP address assigned to ESP-12E
-	Serial.println(WiFi.localIP());
-	OpenEPT_ED_SetEPFast((uint8_t*)"Connecting done\n\r", strlen("Connecting done\n\r"));
-	Serial.print("Access Point IP Address: ");
-  	Serial.println(WiFi.gatewayIP());  // This is the router's IP address
+	OpenEPT_ED_SendInfo("Connecting done");
+	OpenEPT_ED_SendInfo("IP Addr:");
+	OpenEPT_ED_SendInfo((const char*)WiFi.localIP().toString().c_str());
+	OpenEPT_ED_SendInfo("Access Point IP Address: ");
+  	OpenEPT_ED_SendInfo((const char*)WiFi.gatewayIP().toString().c_str());  // This is the router's IP address
+	
 	Udp.begin(localUdpPort);
 
 	currentAction = ACTION_BIG;
 	iterationNo = 0;
+	cnt1 = 0;
 }
 void loop() 
 {	
@@ -108,10 +113,23 @@ void loop()
 	}
 	cnt++;
 	iterationNo +=1;
-	delay(1000);
 	if(iterationNo % 5 == 0)
 	{
 		currentAction = currentAction == ACTION_BIG ? ACTION_SMALL : ACTION_BIG;
+		OpenEPT_ED_SendInfo("Try to stop EP Link");
+		snprintf(data_string, sizeof(data_string), "STOP %u", cnt1);
+		OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
+		OpenEPT_ED_Stop();	
+		delay(10000);
+		OpenEPT_ED_SendInfo("Try to Establish EP Link");
+		OpenEPT_ED_Start();
+		cnt1 += 1;
+		snprintf(data_string, sizeof(data_string), "START %u", cnt1);
+		OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
+	}
+	else
+	{
+		delay(1000);
 	}
 	//if (iterationNo == 10) ESP.deepSleep(5000000);
 

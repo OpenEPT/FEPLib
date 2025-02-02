@@ -55,6 +55,25 @@ int OpenEPT_ED_Platform_Send(char character)
     return OPEN_EPT_STATUS_OK;
 }
 
+
+/**
+ * @brief Read a single character over UART.
+ *
+ * This function Read one character through UART2 using the HAL library.
+ *
+ * @param character Read character.
+ * @return OPEN_EPT_STATUS_OK on successful transmission,
+ *         OPEN_EPT_STATUS_ERROR on transmission error.
+ */
+int OpenEPT_ED_Platform_Read(char* character)
+{
+    int ret = 0;
+    Serial.setTimeout(1000);
+    ret = Serial.readBytes(character, 1);
+    if(ret <= 0) return OPEN_EPT_STATUS_ERROR;
+    return OPEN_EPT_STATUS_OK;
+}
+
 /**
  * @brief Synchronizes up by setting GPIOA pin 5 to HIGH.
  *
