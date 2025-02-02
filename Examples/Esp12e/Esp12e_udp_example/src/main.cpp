@@ -25,12 +25,12 @@
 
 #define BUILTIN_LED 2
 
-const char *ssid = "Haris";
+const char *ssid = "5G High Freqyency";
 const char *password = "21051995";
 
 WiFiUDP Udp;
 unsigned int localUdpPort = 53615;
-const char *text = "HARI AAA1";
+const char *text = "DATA AAA1";
 char big_niz[1000];
 char data_string[255];
 unsigned int cnt;
@@ -73,25 +73,31 @@ void setup() {
 }
 void loop() 
 {	
-	snprintf(data_string, sizeof(data_string), "Data sending %u", cnt);
-	OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 	//Send dummy data
 	
 	switch(currentAction)
 	{
 		case ACTION_BIG:
-		for(int i = 0; i < 10; i++)
-		{
-			Udp.beginPacket("192.168.1.100", localUdpPort); // <- Check address for AP, this is hardcoded
-			Udp.write(big_niz);
-			Udp.endPacket();
-			delay(10);		
-		}
+			snprintf(data_string, sizeof(data_string), "DataL sending %u", cnt);
+			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
+			for(int i = 0; i < 10; i++)
+			{
+				Udp.beginPacket("192.168.2.100", localUdpPort); // <- Check address for AP, this is hardcoded
+				Udp.write(big_niz);
+				Udp.endPacket();
+				delay(10);		
+			}
+			snprintf(data_string, sizeof(data_string), "DataL sent %u", cnt);
+			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 		break;
-		case ACTION_SMALL:		
-			Udp.beginPacket("192.168.1.100", localUdpPort); // <- Check address for AP, this is hardcoded
+		case ACTION_SMALL:
+			snprintf(data_string, sizeof(data_string), "DataS sending %u", cnt);
+			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));		
+			Udp.beginPacket("192.168.2.100", localUdpPort); // <- Check address for AP, this is hardcoded
 			Udp.write(text);
 			Udp.endPacket();
+			snprintf(data_string, sizeof(data_string), "DataS sent %u", cnt);
+			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 		break;
 	}
 	if (WiFi.status() != WL_CONNECTED) {
@@ -100,8 +106,6 @@ void loop()
 	else {
 		digitalWrite(BUILTIN_LED, LOW);
 	}
-	snprintf(data_string, sizeof(data_string), "Data sent %u", cnt);
-	OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 	cnt++;
 	iterationNo +=1;
 	delay(1000);
