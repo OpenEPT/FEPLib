@@ -13,8 +13,11 @@
 #ifndef OPENEPT_ED_H_
 #define OPENEPT_ED_H_
 
-#include "./Platform/platform.h"
 #include <stdint.h>
+
+#define OPEN_EPT_STATUS_OK                  0
+#define OPEN_EPT_STATUS_ERROR               1
+
 
 /* Size of the buffer used within OpenEPT EP Library to receive messages from Acquistion device */
 #define OPENEPT_CONF_RECEIVE_BUFFER_SIZE    100
@@ -58,8 +61,8 @@ int OpenEPT_ED_Stop();
  *
  * This function configures a communication energy point by sending its name character by
  * character to the platform. It adds a carriage return ('\r') after the energy point
- * name and performs synchronization before and after sending the data. SYNC  is toggled before 
- * energy point name is transmited over serial interface
+ * name and performs synchronization before sending the data (SYNC  is toggled before 
+ * energy point name is transmited over serial interface)
  *
  * @param epName Pointer to the name of the energy point.
  * @param epNameSize Size of the energy point name in bytes.
@@ -69,14 +72,14 @@ int OpenEPT_ED_Stop();
 int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize);
 
 /**
- * @brief Send information message to Acquisition device.
+ * @brief Send info message to OpenEPT device.
  *
- * Send information message to Acquisition device device over serial interface
+ * Send info message to OpenEPT Device over serial interface
  *
  * @param message Information message.
  * @return OPEN_EPT_STATUS_OK on successful setup,
  *         OPEN_EPT_STATUS_ERROR on failure.
  */
 int OpenEPT_ED_SendInfo(const char* message);
-
-#endif /* OPENEPT_ED_H_ */
+ 
+ #endif /* OPENEPT_ED_H_ */

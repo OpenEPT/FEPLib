@@ -3,9 +3,10 @@
 */
 
 #include <Arduino.h>
-#include <openept_ed.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
+
+#include "feplib/feplib.h"
 
 #define BUILTIN_LED 2
 
