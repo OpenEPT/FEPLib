@@ -18,7 +18,7 @@
 static uint8_t OPENEPT_START_MSG[]           = "START\r";
 static uint8_t OPENEPT_START_MSG_SIZE        = 6;
 static uint8_t OPENEPT_STOP_MSG[]            = "STOP\r";
-static uint8_t OPENEPT_STOP_MSG_SIZE        = 5;
+static uint8_t OPENEPT_STOP_MSG_SIZE         = 5;
 static uint8_t OPENEPT_RECEIVE_BUFFER[OPENEPT_CONF_RECEIVE_BUFFER_SIZE];
 
 
@@ -134,26 +134,6 @@ int OpenEPT_ED_Stop()
 }
 
 
-int OpenEPT_ED_SetEPSlow(uint8_t* epName, uint32_t epNameSize)
-{
-    if(OpenEPT_ED_Platform_SyncUp() != 0) return OPEN_EPT_STATUS_ERROR;
-    uint32_t cnt = 0;
-    //Send EP message header
-    if(OpenEPT_ED_Platform_Send('1') != 0) return OPEN_EPT_STATUS_ERROR;
-    if(OpenEPT_ED_Platform_Send(':') != 0) return OPEN_EPT_STATUS_ERROR;
-    
-    //Send EP message content
-    while(cnt < epNameSize)
-    {
-        if(OpenEPT_ED_Platform_Send((char)epName[cnt]) != 0) return OPEN_EPT_STATUS_ERROR;
-        cnt++;
-    }
-    if(OpenEPT_ED_Platform_Send('\r') != 0) return OPEN_EPT_STATUS_ERROR;
-    if(OpenEPT_ED_Platform_SyncDown() != 0) return OPEN_EPT_STATUS_ERROR;
-    return OPEN_EPT_STATUS_OK;
-}
-
-
 int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize)
 {
     if(OpenEPT_ED_Platform_SyncToogle() != 0) return OPEN_EPT_STATUS_ERROR;
@@ -193,19 +173,3 @@ int OpenEPT_ED_SendInfo(const char* message)
 }
 
 
-int OpenEPT_ED_SyncUp()
-{
-    return OpenEPT_ED_Platform_SyncUp();
-}
-
-
-int OpenEPT_ED_SyncDown()
-{
-    return OpenEPT_ED_Platform_SyncDown();
-}
-
-
-int OpenEPT_ED_SyncToogle()
-{
-    return OpenEPT_ED_Platform_SyncToogle();
-}
