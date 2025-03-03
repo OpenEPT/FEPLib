@@ -1,0 +1,6 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define OPENEPT_ED_CONF_RECEIVE_BUFFER_SIZE    100
+
+#endif  // CONFIG_H

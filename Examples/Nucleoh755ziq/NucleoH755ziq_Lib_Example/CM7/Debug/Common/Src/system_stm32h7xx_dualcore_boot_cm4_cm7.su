@@ -1,2 +1,2 @@
-D:/prof_Hari/WS/LowPower/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:177:6:SystemInit	4	static
-D:/prof_Hari/WS/LowPower/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:323:6:SystemCoreClockUpdate	48	static
+C:/Users/Haris/Documents/OpenEPT/OpenEPTOrganization/FEPLib/Examples/Nucleoh755ziq/NucleoH755ziq_Lib_Example/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:177:6:SystemInit	4	static
+C:/Users/Haris/Documents/OpenEPT/OpenEPTOrganization/FEPLib/Examples/Nucleoh755ziq/NucleoH755ziq_Lib_Example/Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.c:323:6:SystemCoreClockUpdate	48	static

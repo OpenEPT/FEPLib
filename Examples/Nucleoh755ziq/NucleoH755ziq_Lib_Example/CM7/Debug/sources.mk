@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
 ################################################################################
 
 ELF_SRCS := 
@@ -23,9 +23,11 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Common/Src \
-Core/Inc/Lib/src \
-Core/Inc/Lib/src/platform \
 Core/Src \
 Core/Startup \
+Core/feplib \
+Core/stm32/stm32h755ziq \
 Drivers/STM32H7xx_HAL_Driver \
+Core/feplib/platforms/stm32/stm32h755ziq \
+Core/feplib/src \
 

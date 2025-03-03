@@ -14,6 +14,7 @@
  #include <string.h> 
  #include "feplib.h"
  #include "platform.h"
+ 
 
  static uint8_t OPENEPT_START_MSG[]           = "START\r";
  static uint8_t OPENEPT_START_MSG_SIZE        = 6;
@@ -171,6 +172,7 @@
      if(OpenEPT_ED_Platform_Send('\r') != 0) return OPEN_EPT_STATUS_ERROR;
      return OPEN_EPT_STATUS_OK;
  }
+
  
  
  

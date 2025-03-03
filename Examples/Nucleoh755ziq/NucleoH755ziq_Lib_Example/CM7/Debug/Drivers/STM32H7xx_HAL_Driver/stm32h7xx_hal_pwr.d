@@ -1,5 +1,5 @@
 Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o: \
- D:/prof_Hari/WS/LowPower/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c \
+ C:/Users/Haris/Documents/OpenEPT/OpenEPTOrganization/FEPLib/Examples/Nucleoh755ziq/NucleoH755ziq_Lib_Example/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \

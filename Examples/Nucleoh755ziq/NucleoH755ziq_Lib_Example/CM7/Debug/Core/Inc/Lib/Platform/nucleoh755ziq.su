@@ -1,4 +1,0 @@
-../Core/Inc/Lib/Platform/nucleoh755ziq.c:27:5:OpenEPT_ED_Platform_Init	48	static
-../Core/Inc/Lib/Platform/nucleoh755ziq.c:86:5:OpenEPT_ED_Platform_Send	16	static
-../Core/Inc/Lib/Platform/nucleoh755ziq.c:101:5:OpenEPT_ED_Platform_SyncUp	16	static
-../Core/Inc/Lib/Platform/nucleoh755ziq.c:117:5:OpenEPT_ED_Platform_SyncDown	16	static

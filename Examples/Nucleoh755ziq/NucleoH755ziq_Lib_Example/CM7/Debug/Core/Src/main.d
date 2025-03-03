@@ -34,10 +34,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- ../Core/Inc/Lib/include/openept_ed.h ../Core/Inc/Lib/include/platform.h \
- ../Core/Inc/Lib/include/nucleoh755ziq.h \
- ../Core/Inc/Lib/include/openept_ed.h \
- ../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h
+ ../Core/Src/../feplib/feplib.h ../Core/Src/../feplib/config.h
 ../Core/Inc/main.h:
 ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
@@ -74,8 +71,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-../Core/Inc/Lib/include/openept_ed.h:
-../Core/Inc/Lib/include/platform.h:
-../Core/Inc/Lib/include/nucleoh755ziq.h:
-../Core/Inc/Lib/include/openept_ed.h:
-../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h:
+../Core/Src/../feplib/feplib.h:
+../Core/Src/../feplib/config.h:

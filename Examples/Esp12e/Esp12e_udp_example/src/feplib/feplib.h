@@ -14,13 +14,18 @@
 #define OPENEPT_ED_H_
 
 #include <stdint.h>
+#include "config.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define OPEN_EPT_STATUS_OK                  0
 #define OPEN_EPT_STATUS_ERROR               1
 
 
 /* Size of the buffer used within OpenEPT EP Library to receive messages from Acquistion device */
-#define OPENEPT_CONF_RECEIVE_BUFFER_SIZE    100
+#define OPENEPT_CONF_RECEIVE_BUFFER_SIZE    OPENEPT_ED_CONF_RECEIVE_BUFFER_SIZE
 
 /**
  * @brief Initializes the OpenEPT Embedded Device.
@@ -81,5 +86,9 @@ int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize);
  *         OPEN_EPT_STATUS_ERROR on failure.
  */
 int OpenEPT_ED_SendInfo(const char* message);
+
+#ifdef __cplusplus
+}
+#endif
  
  #endif /* OPENEPT_ED_H_ */

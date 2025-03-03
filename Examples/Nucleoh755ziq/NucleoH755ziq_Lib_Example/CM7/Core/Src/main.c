@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "string.h"
+#include "../feplib/feplib.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -156,7 +157,7 @@ Error_Handler();
   if(tmp != 0) return 1;
   char *str = "Jopa\n";
   while (1) {
-	  OpenEPT_ED_SetEP((uint8_t *)str, strlen(str));
+	  OpenEPT_ED_SetEPFast((uint8_t *)str, strlen(str));
 	  volatile int a = 1;
 	  (void)a;
   }

@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -10,10 +10,12 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32H7xx_HAL_Driver/subdir.mk
+-include Core/stm32/stm32h755ziq/subdir.mk
+-include Core/feplib/src/subdir.mk
+-include Core/feplib/platforms/stm32/stm32h755ziq/subdir.mk
+-include Core/feplib/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include Core/Inc/Lib/src/platform/subdir.mk
--include Core/Inc/Lib/src/subdir.mk
 -include Common/Src/subdir.mk
 -include objects.mk
 
@@ -63,8 +65,8 @@ all: main-build
 main-build: LowPower_CM7.elf secondary-outputs
 
 # Tool invocations
-LowPower_CM7.elf LowPower_CM7.map: $(OBJS) $(USER_OBJS) D:\prof_Hari\WS\LowPower\CM7\STM32H755ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LowPower_CM7.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\prof_Hari\WS\LowPower\CM7\STM32H755ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LowPower_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LowPower_CM7.elf LowPower_CM7.map: $(OBJS) $(USER_OBJS) C:\Users\Haris\Documents\OpenEPT\OpenEPTOrganization\FEPLib\Examples\Nucleoh755ziq\NucleoH755ziq_Lib_Example\CM7\STM32H755ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LowPower_CM7.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Haris\Documents\OpenEPT\OpenEPTOrganization\FEPLib\Examples\Nucleoh755ziq\NucleoH755ziq_Lib_Example\CM7\STM32H755ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LowPower_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
