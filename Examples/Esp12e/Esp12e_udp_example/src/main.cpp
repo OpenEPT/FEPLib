@@ -10,7 +10,7 @@
 
 #define BUILTIN_LED 2
 
-const char *ssid = "5G High Freqyency";
+const char *ssid = "Haris";
 const char *password = "21051995";
 
 WiFiUDP Udp;
@@ -68,25 +68,31 @@ void loop()
 	switch(currentAction)
 	{
 		case ACTION_BIG:
-			snprintf(data_string, sizeof(data_string), "DataL sending %u", cnt);
+			snprintf(data_string, sizeof(data_string), "LStart %u", cnt);
 			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 			for(int i = 0; i < 10; i++)
 			{
 				Udp.beginPacket("192.168.2.100", localUdpPort); // <- Check address for AP, this is hardcoded
 				Udp.write(big_niz);
 				Udp.endPacket();
+				//OpenEPT_ED_Record();			
 				delay(10);		
 			}
-			snprintf(data_string, sizeof(data_string), "DataL sent %u", cnt);
+			// for(int i = 0; i < 10; i++)
+			// {
+			// 	snprintf(data_string, sizeof(data_string), "P %u", i);
+			// 	OpenEPT_ED_SendEPName((uint8_t*)data_string, strlen(data_string));
+			// }
+			snprintf(data_string, sizeof(data_string), "LStop %u", cnt);
 			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 		break;
 		case ACTION_SMALL:
-			snprintf(data_string, sizeof(data_string), "DataS sending %u", cnt);
+			snprintf(data_string, sizeof(data_string), "SStart %u", cnt);
 			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));		
 			Udp.beginPacket("192.168.2.100", localUdpPort); // <- Check address for AP, this is hardcoded
 			Udp.write(text);
 			Udp.endPacket();
-			snprintf(data_string, sizeof(data_string), "DataS sent %u", cnt);
+			snprintf(data_string, sizeof(data_string), "SStop %u", cnt);
 			OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 		break;
 	}
@@ -105,7 +111,7 @@ void loop()
 		snprintf(data_string, sizeof(data_string), "STOP %u", cnt1);
 		OpenEPT_ED_SetEPFast((uint8_t*)data_string, strlen(data_string));
 		OpenEPT_ED_Stop();	
-		delay(10000);
+		delay(3000);
 		OpenEPT_ED_SendInfo("Try to Establish EP Link");
 		OpenEPT_ED_Start();
 		cnt1 += 1;

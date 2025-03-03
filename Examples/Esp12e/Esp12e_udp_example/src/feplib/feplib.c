@@ -174,5 +174,30 @@
  }
 
  
+int OpenEPT_ED_Record()
+{
+    if(OpenEPT_ED_Platform_SyncToogle() != 0) return OPEN_EPT_STATUS_ERROR;
+    return OPEN_EPT_STATUS_OK;  
+}
+
+int OpenEPT_ED_SendEPName(uint8_t* epName, uint32_t epNameSize)
+{
+    uint32_t cnt = 0;
+    //Send EP message header
+    if(OpenEPT_ED_Platform_Send('1') != 0) return OPEN_EPT_STATUS_ERROR;
+    if(OpenEPT_ED_Platform_Send(':') != 0) return OPEN_EPT_STATUS_ERROR;
+    
+    //Send EP message content
+    while(cnt < epNameSize)
+    {
+        if(OpenEPT_ED_Platform_Send((char)epName[cnt]) != 0) return OPEN_EPT_STATUS_ERROR;
+        cnt++;
+    }
+    if(OpenEPT_ED_Platform_Send('\r') != 0) return OPEN_EPT_STATUS_ERROR;
+    return OPEN_EPT_STATUS_OK;
+
+}
+
+ 
  
  

@@ -87,6 +87,29 @@ int OpenEPT_ED_SetEPFast(uint8_t* epName, uint32_t epNameSize);
  */
 int OpenEPT_ED_SendInfo(const char* message);
 
+/**
+ * @brief Sets up a communication energy point.
+ *
+ * This function will send ENergy Request without name. It is expected that energy request 
+ * name will be sent later
+ * 
+ * @return OPEN_EPT_STATUS_OK on successful setup,
+ *         OPEN_EPT_STATUS_ERROR on failure.
+ */
+int OpenEPT_ED_Record();
+
+/**
+ * @brief 
+ *
+ * This function will send EP Name only. 
+ *
+ * @param epName Pointer to the name of the energy point.
+ * @param epNameSize Size of the energy point name in bytes.
+ * @return OPEN_EPT_STATUS_OK on successful setup,
+ *         OPEN_EPT_STATUS_ERROR on failure.
+ */
+int OpenEPT_ED_SendEPName(uint8_t* epName, uint32_t epNameSize);
+
 #ifdef __cplusplus
 }
 #endif
