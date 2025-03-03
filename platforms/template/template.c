@@ -6,12 +6,9 @@
  * GPIOs for synchronization purposes in the OpenEPT Embedded Device (ED) library.
  *
  * @date November 3, 2024
- * @author Dimitrije Lilic
+ * @author Dimitrije Lilic, Haris Turkmanovic
  */
 
- #include "../../../config.h"
- /*OPENEPT: Change PLATFORMNAME with platform name */
- #if defined(OPENEPT_ED_CONF_PLATFORM_PLATFORNAME)
  /*OPENEPT: Platform specific includes files should be included here */
  
 
@@ -52,6 +49,4 @@
     /* OPENEPT: Code that set Toogle pin low should be implemented here */
     return OPEN_EPT_STATUS_OK;
  }
- 
- #endif
- 
+  

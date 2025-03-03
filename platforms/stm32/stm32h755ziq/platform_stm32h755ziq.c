@@ -1,11 +1,3 @@
-/*
- * platform_stm32h755ziq.c
- *
- *  Created on: Mar 3, 2025
- *      Author: Haris
- */
-
-
 /**
  * @file nucleoh755ziq.c
  * @brief Platform-specific implementation for NUCLEO-H755ZI-Q UART and GPIO initialization.
@@ -14,7 +6,7 @@
  * GPIOs for synchronization purposes in the OpenEPT Embedded Device (ED) library.
  *
  * @date November 3, 2024
- * @author Dimitrije Lilic
+ * @author Dimitrije Lilic, Haris Turkmanovic
  */
 #include <strings.h>
 #include "../../feplib.h"

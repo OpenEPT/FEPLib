@@ -1,5 +1,5 @@
 /**
- * @file openept_ed.h
+ * @file feplib.h
  * @brief Implementation of the OpenEPT Embedded Device (ED) library.
  *
  * This library provides functions for initializing and setting up communication
@@ -7,7 +7,7 @@
  * initialization, synchronization, and data transmission.
  *
  * @date November 3, 2024
- * @author Dimitrije Lilic
+ * @author Dimitrije Lilic, Haris Turkmanovic
  */
 
 #ifndef OPENEPT_ED_H_

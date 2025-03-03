@@ -6,7 +6,7 @@
  * GPIOs for synchronization purposes in the OpenEPT Embedded Device (ED) library.
  *
  * @date November 3, 2024
- * @author Dimitrije Lilic
+ * @author Dimitrije Lilic, Haris Turkmanovic
  */
 #include <Arduino.h>
 #include <stdint.h>
